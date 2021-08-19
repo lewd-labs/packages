@@ -1,6 +1,6 @@
 import type { LoggerOptions } from "../typings/utilTypes"
 import colors from "./LoggerColors"
-import { process } from "process"
+import process from "process"
 
 export class Logger {
 	private readonly name?: string
@@ -69,3 +69,4 @@ export class Logger {
 		)
 	}
 }
+console.log("Running logger!")

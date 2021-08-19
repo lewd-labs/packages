@@ -11,4 +11,4 @@
  * @description
  */
 
-export { Logger } from "./logger/x"
+export { Logger } from "./logger"
