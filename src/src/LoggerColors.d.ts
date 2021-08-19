@@ -1,0 +1,26 @@
+declare enum colors {
+    RESET = "\u001B[0m",
+    BRIGHT = "\u001B[1m",
+    DIM = "\u001B[2m",
+    UNDERSCORE = "\u001B[4m",
+    BLINK = "\u001B[5m",
+    REVERSE = "\u001B[7m",
+    HIDDEN = "\u001B[8m",
+    BLACK = "\u001B[30m",
+    RED = "\u001B[31m",
+    GREEN = "\u001B[32m",
+    YELLOW = "\u001B[33m",
+    BLUE = "\u001B[34m",
+    MAGENTA = "\u001B[35m",
+    CYAN = "\u001B[36m",
+    WHITE = "\u001B[37m",
+    BGBLACK = "\u001B[40m",
+    BGRED = "\u001B[41m",
+    BGGREEN = "\u001B[42m",
+    BGYELLOW = "\u001B[43m",
+    BGBLUE = "\u001B[44m",
+    BGMAGENTA = "\u001B[45m",
+    BGCYAN = "\u001B[46m",
+    BGWHITE = "\u001B[47m"
+}
+export default colors;

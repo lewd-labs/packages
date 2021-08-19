@@ -3,9 +3,9 @@
     "target": "es6",
     "module": "commonjs",
     "declaration": true,
-    "outDir": "./lib",
+    "outDir": "./src",
     "strict": true
   },
   "include": ["src", "logger"],
-  "exclude": ["src/node_modules", "**/__tests__/*"]
+  "exclude": ["node_modules", "**/__tests__/*"]
 }
