@@ -12,4 +12,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./logger/index"), exports);
 __exportStar(require("./fapmongo/index"), exports);
+__exportStar(require("./provider"), exports);
 //# sourceMappingURL=index.js.map
