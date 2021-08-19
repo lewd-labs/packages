@@ -13,9 +13,9 @@ A [mongoose](https://npm.im/mongoose) wrapper.
 **Initiate DB**
 
 ```js
-const { Database } = require("zapmongo");
+const { Database } = require("@taminaru/packages");
 // or
-import { Database } from "zapmongo";
+import { Database } from "@taminaru/packages";
 
 const db = new Database({
   mongoURI: "my-super-secret-mongo-uri-here",
