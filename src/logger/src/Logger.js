@@ -14,11 +14,11 @@ class Logger {
       [Date] [MemUsed][Name] [Type] <value>
       */
     base(type, value, color) {
-        // const used_mem: number = process.memoryUsage().heapUsed / 1024 / 1024
+        const used_mem = process.memoryUsage().heapUsed / 1024 / 1024;
         let outputBuilder = "";
         outputBuilder +=
             `[${new Date().toLocaleTimeString()}|${new Date().toLocaleDateString()}]${color}${LoggerColors_1.default.DIM}`.trim();
-        outputBuilder += `[${Math.round(5 * 100) / 100} MB]${this.name ? `[${this.name}]` : ""}[${type}]:${LoggerColors_1.default.BRIGHT}`.trim();
+        outputBuilder += `[${Math.round(used_mem * 100) / 100} MB]${this.name ? `[${this.name}]` : ""}[${type}]:${LoggerColors_1.default.BRIGHT}`.trim();
         return console.log(outputBuilder, value, LoggerColors_1.default.RESET);
     }
     /**
