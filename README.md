@@ -16,7 +16,7 @@ To install simply do `yarn add https://github.com/taminaru/packages` or `npm i h
 Then go to the index.ts file and use the export name to run the code. Example:
 
 ```ts
-import { Logger } from "packages"
+import { Logger } from "@taminaru/packages"
 import { LoggerOptions } from "./somewhere.ts"
 
 class Logger {
@@ -32,3 +32,7 @@ const log = new Logger()
 With this code you would import the class { Logger } like so.
 
 If you need any support join our [discord server](https://discord.com/invite/N79DZsm3m2).
+
+### Scope
+
+When importing a module use the scope import `@taminaru/packages`
