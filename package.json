@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/taminaru/packages/issues"
   },
-  "homepage": "https://github.com/taminaru/packages#readme"
+  "homepage": "https://github.com/taminaru/packages#readme",
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
 }
