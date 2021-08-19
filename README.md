@@ -2,6 +2,8 @@ Packages is a public repo for the Taminaru Discord Bot.
 
 This repo is for the bot and its dependencies. I dont want to clutter the core code so im making this.
 
+Code is built in ts and then compiled to ts
+
 ### packages
 
 - Logger

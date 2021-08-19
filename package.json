@@ -5,6 +5,7 @@
 	"main": "./src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "prettier --write .",
 		"build": "tsc"
 	},
 	"repository": {
@@ -17,6 +18,11 @@
 		"url": "https://github.com/taminaru/packages/issues"
 	},
 	"homepage": "https://github.com/taminaru/packages#readme",
-	"devDependencies": {},
-	"dependencies": {}
+	"devDependencies": {
+		"prettier": "^2.1.2",
+		"typescript": "^4.0.5"
+	},
+	"dependencies": {
+		"mongoose": "^5.13.7"
+	}
 }
