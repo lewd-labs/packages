@@ -18,19 +18,20 @@ To install simply do `yarn add https://github.com/taminaru/packages` or `npm i h
 Then go to the index.ts file and use the export name to run the code. Example:
 
 ```ts
-import { Logger } from "@taminaru/packages"
-import { LoggerOptions } from "./somewhere.ts"
+import { Logger } from "@taminaru/packages";
+import { LoggerOptions } from "./somewhere.ts";
 
 class Logger {
-	private readonly example?: string
-	public constructor(options?: LoggerOptions) {
-		this.example = example
-	}
-	// logger logic
+  private readonly example?: string;
+  public constructor(options?: LoggerOptions) {
+    this.example = example;
+  }
+  // logger logic
 }
 // Allows the logger to be used
-const log = new Logger()
+const log = new Logger();
 ```
+
 With this code you would import the class { Logger } like so.
 
 If you need any support join our [discord server](https://discord.com/invite/N79DZsm3m2).

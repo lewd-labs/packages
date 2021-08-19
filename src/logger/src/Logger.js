@@ -11,8 +11,8 @@ class Logger {
         this.name = options?.name;
     }
     /*
-    [Date] [MemUsed][Name] [Type] <value>
-    */
+      [Date] [MemUsed][Name] [Type] <value>
+      */
     base(type, value, color) {
         // const used_mem: number = process.memoryUsage().heapUsed / 1024 / 1024
         let outputBuilder = "";
