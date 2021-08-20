@@ -7,9 +7,12 @@ Code is built in ts and then compiled to ts
 ### packages
 
 - Logger
-- MongoDb provider
+- MongoDb client provider
+- GiveAway manger 
+- ModMail manger 
+- Db handler
 
-more will be added
+check src/index.ts for exports
 
 ### How to install
 
