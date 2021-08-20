@@ -1,16 +1,16 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./logger/index"), exports);
-__exportStar(require("./fapmongo/index"), exports);
-__exportStar(require("./provider"), exports);
+exports.GiveawayClient = exports.MongooseProvider = exports.Database = exports.Logger = void 0;
+// Logger
+var index_1 = require("./logger/index");
+Object.defineProperty(exports, "Logger", { enumerable: true, get: function () { return index_1.Logger; } });
+// Fapmongo db
+var index_2 = require("./fapmongo/index");
+Object.defineProperty(exports, "Database", { enumerable: true, get: function () { return index_2.Database; } });
+// MongoDB
+var provider_1 = require("./provider");
+Object.defineProperty(exports, "MongooseProvider", { enumerable: true, get: function () { return provider_1.MongooseProvider; } });
+// giveaways
+var index_3 = require("./giveaways/index");
+Object.defineProperty(exports, "GiveawayClient", { enumerable: true, get: function () { return index_3.GiveawayClient; } });
 //# sourceMappingURL=index.js.map
