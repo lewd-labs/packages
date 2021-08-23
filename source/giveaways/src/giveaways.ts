@@ -43,7 +43,7 @@ export class GiveawayClient {
 			emoji: emoji || "🎉",
 		}
 
-		this.options.client.on("ready", () => this.ready())
+		 this.ready()
 	}
 
 	private ready() {
