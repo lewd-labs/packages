@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Database = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const DatabaseModule_1 = require("./DatabaseModule");
+const index_1 = require("../index");
+const logger = new index_1.Logger();
 // database manager
 class Database {
     options;
@@ -24,6 +26,7 @@ class Database {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
+        logger.log(`DataBase is online and connected!`);
     }
     async load(schema) {
         return new DatabaseModule_1.DatabaseModule(this.schemas.get(schema));

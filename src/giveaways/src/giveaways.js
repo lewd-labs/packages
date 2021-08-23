@@ -31,7 +31,7 @@ class GiveawayClient {
             defaultColor: defaultColor || "#FF0000",
             emoji: emoji || "🎉",
         };
-        this.options.client.on("ready", () => this.ready());
+        this.ready();
     }
     ready() {
         this.schema.find().then((data) => {
