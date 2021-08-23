@@ -23,6 +23,11 @@ class Database {
 		mongoose.connect(options.mongoURI, {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
+			bufferCommands: true,
+			autoIndex: true,
+			useFindAndModify: true,
+			autoCreate: false,
+			useCreateIndex: false,
 		})
 		logger.log(`DataBase is online and connected!`)
 	}

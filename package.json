@@ -1,6 +1,6 @@
 {
   "name": "@taminaru/packages",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a repo for taminaru packages",
   "main": "./src/index.js",
   "scripts": {
