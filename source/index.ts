@@ -1,7 +1,7 @@
 // Logger
 export { Logger } from "./logger/index"
 // Fapmongo db
-export { Database } from "./fapmongo/index"
+export { Database } from "./mongo/index"
 // MongoDB
 export { MongooseProvider } from "./provider"
 

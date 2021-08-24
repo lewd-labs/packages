@@ -5,7 +5,7 @@ exports.GiveawayClient = exports.MongooseProvider = exports.Database = exports.L
 var index_1 = require("./logger/index");
 Object.defineProperty(exports, "Logger", { enumerable: true, get: function () { return index_1.Logger; } });
 // Fapmongo db
-var index_2 = require("./fapmongo/index");
+var index_2 = require("./mongo/index");
 Object.defineProperty(exports, "Database", { enumerable: true, get: function () { return index_2.Database; } });
 // MongoDB
 var provider_1 = require("./provider");
