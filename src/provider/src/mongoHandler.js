@@ -5,13 +5,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MongooseProvider = void 0;
 const provider_1 = __importDefault(require("./provider"));
+const mongoose_1 = __importDefault(require("mongoose"));
+const index_1 = require("../../index");
+let logger = new index_1.Logger();
 /**
  * Provider using the `Mongoose` library.
  * @param {Model} model - A Mongoose model.
  * @extends {Provider}
  */
 class MongooseProvider extends provider_1.default {
-    constructor(model) {
+    constructor(model, mongooseConnectionString) {
+        // info: https://masteringjs.io/tutorials/mongoose/connection-status
+        if (mongoose_1.default.connection.readyState !== 1) {
+            if (!mongooseConnectionString) {
+                throw new Error("There is no established connection with mongoose and a mongoose connection is required!");
+            }
+        }
+        try {
+            mongoose_1.default.connect(mongooseConnectionString, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                bufferCommands: true,
+                autoIndex: true,
+                useFindAndModify: true,
+                autoCreate: false,
+                useCreateIndex: false,
+            });
+            /**
+             * Mongoose events
+             */
+            mongoose_1.default.connection.on("connecting", () => {
+                logger.log(`Connecting to Mongoose Provider...`);
+            });
+            mongoose_1.default.connection.on("connected", () => {
+                logger.log(`Mongoose Provider has connected to mongoose.`);
+            });
+            mongoose_1.default.connection.on("disconnecting", () => {
+                logger.warn(`Mongoose Provider is disconnecting...`);
+            });
+            mongoose_1.default.connection.on("disconnected", () => {
+                logger.error(`Mongoose Provider has disconnected.`);
+            });
+        }
+        catch (err) {
+            logger.error(err);
+        }
+        if (!model) {
+            throw new Error("No model was provided for the mongoose provider. This is required!");
+        }
         super();
         /**
          * Mongoose model.
