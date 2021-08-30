@@ -2,6 +2,7 @@ import Provider from "./provider"
 import mongoose from "mongoose"
 import { Logger } from "../../index"
 let logger = new Logger()
+const mongo = mongoose.connection
 
 /**
  * Provider using the `Mongoose` library.
@@ -10,9 +11,15 @@ let logger = new Logger()
  */
 
 export class MongooseProvider extends Provider {
+	static ping() {
+		const currentNano = process.hrtime()
+		setTimeout(() => {}, 2000)
+		const time = process.hrtime(currentNano)
+		return (time[0] * 1e9 + time[1]) * 1e-6
+	}
 	constructor(model: any, mongooseConnectionString: string) {
 		// info: https://masteringjs.io/tutorials/mongoose/connection-status
-		if (mongoose.connection.readyState !== 1) {
+		if (mongo.readyState !== 1) {
 			if (!mongooseConnectionString) {
 				throw new Error(
 					"There is no established connection with mongoose and a mongoose connection is required!"
@@ -28,20 +35,23 @@ export class MongooseProvider extends Provider {
 				useFindAndModify: true,
 				autoCreate: false,
 				useCreateIndex: false,
+				connectTimeoutMS: 15000,
+				family: 4,
+				poolSize: 5,
 			})
 			/**
 			 * Mongoose events
 			 */
-			mongoose.connection.on("connecting", () => {
+			mongo.on("connecting", () => {
 				logger.log(`Connecting to Mongoose Provider...`)
 			})
-			mongoose.connection.on("connected", () => {
+			mongo.on("connected", () => {
 				logger.log(`Mongoose Provider has connected to mongoose.`)
 			})
-			mongoose.connection.on("disconnecting", () => {
+			mongo.on("disconnecting", () => {
 				logger.warn(`Mongoose Provider is disconnecting...`)
 			})
-			mongoose.connection.on("disconnected", () => {
+			mongo.on("disconnected", () => {
 				logger.error(`Mongoose Provider has disconnected.`)
 			})
 		} catch (err) {

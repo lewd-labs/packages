@@ -8,15 +8,22 @@ const provider_1 = __importDefault(require("./provider"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const index_1 = require("../../index");
 let logger = new index_1.Logger();
+const mongo = mongoose_1.default.connection;
 /**
  * Provider using the `Mongoose` library.
  * @param {Model} model - A Mongoose model.
  * @extends {Provider}
  */
 class MongooseProvider extends provider_1.default {
+    static ping() {
+        const currentNano = process.hrtime();
+        setTimeout(() => { }, 2000);
+        const time = process.hrtime(currentNano);
+        return (time[0] * 1e9 + time[1]) * 1e-6;
+    }
     constructor(model, mongooseConnectionString) {
         // info: https://masteringjs.io/tutorials/mongoose/connection-status
-        if (mongoose_1.default.connection.readyState !== 1) {
+        if (mongo.readyState !== 1) {
             if (!mongooseConnectionString) {
                 throw new Error("There is no established connection with mongoose and a mongoose connection is required!");
             }
@@ -30,20 +37,23 @@ class MongooseProvider extends provider_1.default {
                 useFindAndModify: true,
                 autoCreate: false,
                 useCreateIndex: false,
+                connectTimeoutMS: 15000,
+                family: 4,
+                poolSize: 5,
             });
             /**
              * Mongoose events
              */
-            mongoose_1.default.connection.on("connecting", () => {
+            mongo.on("connecting", () => {
                 logger.log(`Connecting to Mongoose Provider...`);
             });
-            mongoose_1.default.connection.on("connected", () => {
+            mongo.on("connected", () => {
                 logger.log(`Mongoose Provider has connected to mongoose.`);
             });
-            mongoose_1.default.connection.on("disconnecting", () => {
+            mongo.on("disconnecting", () => {
                 logger.warn(`Mongoose Provider is disconnecting...`);
             });
-            mongoose_1.default.connection.on("disconnected", () => {
+            mongo.on("disconnected", () => {
                 logger.error(`Mongoose Provider has disconnected.`);
             });
         }

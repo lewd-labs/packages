@@ -4,6 +4,7 @@
 
 import { Logger } from "../logger"
 import { MongooseProvider } from "../provider"
+import ms from "ms"
 
 var log = new Logger()
 
@@ -32,8 +33,13 @@ const mongoTestModel = new mongoose.Schema(
 )
 export = mongoose.model("_testSettingsModel", mongoTestModel)
 
+
+
 try {
+	log.info(`${ms(MongooseProvider.ping())}`)
 	new MongooseProvider(mongoTestModel, "mongodb://localhost:27017/test")
 } catch (error) {
 	log.log(`[0]${error}`)
+} finally {
+	console.log("Test Finished!")
 }

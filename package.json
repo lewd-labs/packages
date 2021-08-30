@@ -1,13 +1,12 @@
 {
   "name": "@taminaru/packages",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "a repo for taminaru packages",
   "main": "./src/index.js",
   "scripts": {
-    "dev": "ts-node source/index.ts",
+    "dev": "ts-node source/test/_test.ts",
     "lint": "prettier --write .",
-    "build": "tsc",
-    "test": "node ./src/test/_test.js"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
